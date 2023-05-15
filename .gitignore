@@ -1,0 +1,61 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+
+# Environment files
+.env
+
+# Build output
+dist/
+build/
+
+# Coverage output
+coverage/
+
+# macOS files
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*.swn
+*.bak
+*.swp
+._*
+
+# OS-specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Visual Studio Code settings
+.vscode/
+
+# WebStorm settings
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# npm lock file
+package-lock.json
+yarn.lock
+
+# End of line normalization
+*.bak
+*.tmp
+*.swp
+*.DS_Store
+
+# Logs and crash reports from the Heroku Node.js buildpack
+npm-debug.log
+yarn-error.log
