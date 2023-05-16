@@ -74,7 +74,12 @@ let html = /*html*/ `
             <button type="submit" class="submit-button mt"> ☑️ </button>
           </form>
           <!-- button to hide/show form as its fixed -->
-          <button>🔼</button>
+          <!-- <button onclick="() => {
+            const display = document.querySelector('form').style.display;
+            console.log(display);
+            display == 'flex' ? display = 'none' : display = 'flex'
+          }">🔼</button> -->
+          <input type="checkbox" id="toggle" />
         </footer>
     </body>
 </html>

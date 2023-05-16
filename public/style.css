@@ -61,6 +61,10 @@ form label:not(:first-child) {
   margin-top: 1rem;
 }
 
+#toggle:checked * {
+  display: none;
+}
+
 /* recycleable classes */
 
 .stack > * {
