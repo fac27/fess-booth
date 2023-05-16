@@ -3,6 +3,41 @@ const server = express();
 
 const messages = [];
 
+const demoMessages = /*html*/ `
+<article class="card">
+<button > 🎫 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🍖 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🎲 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 👨‍🦰 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🎫 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🍖 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🎲 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 👨‍🦰 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+`;
+
 let html = /*html*/ `
 <!DOCTYPE html>
 <html lang="en">
@@ -19,38 +54,23 @@ let html = /*html*/ `
     </head>
     <body class="stack">
         <header>
-            <h1>fess-booth</h1>
+            <h1>(con)fess-booth</h1>
         </header>
-        <main>
+        <main class="flex col">
           <!-- list of messages with random emojis -->
           <!-- strethc goals: random emoji -->
           <!-- strethc goals: click button to expand / shrink post -->
-          <article class="card">
-            <button class="elipsesButton"> 🎫 short summary ...</button>
-            <p>user @ ${new Date().toISOString()}</p>
-          </article>
-          <article class="card">
-            <button class="elipsesButton"> 🍖 short summary ...</button>
-            <p>user @ ${new Date().toISOString()}</p>
-          </article>
-          <article class="card">
-            <button class="elipsesButton"> 🎲 short summary ...</button>
-            <p>user @ ${new Date().toISOString()}</p>
-          </article>
-          <article class="card">
-            <button class="elipsesButton"> 👨‍🦰 short summary ...</button>
-            <p>user @ ${new Date().toISOString()}</p>
-          </article>
+          ${demoMessages}
           <!-- list of messages with random emojis -->
         </main>
         <footer>
-          <form action="/" method="post">
+          <form class="flex col" action="/" method="post">
             <label for="name">Name:</label>
             <input id="name" type="text" name="name" placeholder="Name ...">
             <label for="message"> Message: </label>
             <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." >
             </textarea>
-            <button type="submit" class="submit-b"> ☑️ </button>
+            <button type="submit" class="submit-button mt"> ☑️ </button>
           </form>
           <!-- button to hide/show form as its fixed -->
         </footer>
