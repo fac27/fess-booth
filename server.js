@@ -56,7 +56,7 @@ let html = /*html*/ `
     <body class="stack">
         <header>
             <h1>(con)fess-booth</h1>
-        </header>
+            </header>
         <main class="flex col">
           <!-- list of messages with random emojis -->
           <!-- strethc goals: random emoji -->
@@ -65,21 +65,15 @@ let html = /*html*/ `
           <!-- list of messages with random emojis -->
         </main>
         <footer>
-          <form class="flex col" action="/" method="post">
-            <label for="name">Name:</label>
+        <input type="checkbox" id="toggle" />
+        <form class="flex col" action="/" method="post">
+            <label for="name">Name 📛 :</label>
             <input id="name" type="text" name="name" placeholder="Name ...">
-            <label for="message"> Message: </label>
-            <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." >
-            </textarea>
-            <button type="submit" class="submit-button mt"> ☑️ </button>
+            <label for="message"> Message 💬 : </label>
+            <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." ></textarea>
+            <button type="submit" class="submit-button mt"> 🆗 </button>
           </form>
           <!-- button to hide/show form as its fixed -->
-          <!-- <button onclick="() => {
-            const display = document.querySelector('form').style.display;
-            console.log(display);
-            display == 'flex' ? display = 'none' : display = 'flex'
-          }">🔼</button> -->
-          <input type="checkbox" id="toggle" />
         </footer>
     </body>
 </html>
