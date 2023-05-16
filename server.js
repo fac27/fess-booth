@@ -7,7 +7,7 @@ server.get('/', (req, res) => {
 
 const sanitize = (inputString) => {
   return inputString.replace(/</g, "&lt;");
-}
+};
 
 const validate = (message) => {
   if (message) {
@@ -15,7 +15,7 @@ const validate = (message) => {
   } else {
     return "";
   }
-}
+};
 
 
 module.exports = server;
