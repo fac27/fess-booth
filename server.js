@@ -3,6 +3,41 @@ const server = express();
 
 const messages = [];
 
+const demoMessages = /*html*/ `
+<article class="card">
+<button > 🎫 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🍖 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🎲 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 👨‍🦰 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🎫 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🍖 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 🎲 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+<article class="card">
+<button > 👨‍🦰 short summary ...</button>
+<p>user @ ${new Date().toISOString()}</p>
+</article>
+`;
+
 let html = /*html*/ `
 <!DOCTYPE html>
 <html lang="en">
@@ -12,21 +47,34 @@ let html = /*html*/ `
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>fessBooth</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+        <!-- could server the font therough public as static file for performance -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,400;0,800;1,300&display=swap" rel="stylesheet">
     </head>
-    <body>
+    <body class="stack">
         <header>
-            <h1>Let it out</h1>
-        </header>
-        <section>
-            <!-- list of messages -->
-        </section>
-        <form action="/" method="post">
-            <label for="name">Name:</label>
-            <input id="name" type="text" name="name">
-            <label for="message"> Message: </label>
-            <textarea id="message" rows="4" cols="50" name="message">
-            </textarea>
-        </form>
+            <h1>(con)fess-booth</h1>
+            </header>
+        <main class="flex col">
+          <!-- list of messages with random emojis -->
+          <!-- strethc goals: random emoji -->
+          <!-- strethc goals: click button to expand / shrink post -->
+          ${demoMessages}
+          <!-- list of messages with random emojis -->
+        </main>
+        <footer>
+        <input type="checkbox" id="toggle" />
+        <form class="flex col" action="/" method="post">
+            <label for="name">Name 📛 :</label>
+            <input id="name" type="text" name="name" placeholder="Name ...">
+            <label for="message"> Message 💬 : </label>
+            <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." ></textarea>
+            <button type="submit" class="submit-button mt"> 🆗 </button>
+          </form>
+          <!-- button to hide/show form as its fixed -->
+        </footer>
     </body>
 </html>
 `;
@@ -45,7 +93,7 @@ server.post("/", (req, res) => {
 
 const sanitize = (inputString) => {
   return inputString.replace(/</g, "&lt;");
-}
+};
 
 const validate = (message) => {
   if (message) {
@@ -53,7 +101,6 @@ const validate = (message) => {
   } else {
     return "";
   }
-}
-
+};
 
 module.exports = server;
