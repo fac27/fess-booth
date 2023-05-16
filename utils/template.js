@@ -44,8 +44,8 @@ function home(posts) {
       <main class="flex col">
         <!-- list of messages with random emojis -->
         <!-- strethc goals: click button to expand / shrink post -->
-        ${demoMessages}
-        <!-- ${posts.map(postItem).join("")} -->
+        <!-- ${demoMessages} -->
+        ${posts.map(postItem).join("")}
         <!-- list of messages with random emojis -->
       </main>
       <footer>
@@ -70,10 +70,10 @@ function postItem(post) {
   const newMessage = sanitize(post.message);
 
   return `
-    <li>
-      <p>${newMessage}</p>
-      <p>—${post.name} | ${prettyDate}</p>
-    </li>
+  <article class="card">
+    <button > ${newMessage} </button>
+    <p> ${post.name} @ ${prettyDate}</p>
+  </article>
   `;
 }
 
