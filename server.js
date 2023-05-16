@@ -47,6 +47,7 @@ let html = /*html*/ `
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>fessBooth</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
         <!-- could server the font therough public as static file for performance -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,6 +74,7 @@ let html = /*html*/ `
             <button type="submit" class="submit-button mt"> ☑️ </button>
           </form>
           <!-- button to hide/show form as its fixed -->
+          <button>🔼</button>
         </footer>
     </body>
 </html>
