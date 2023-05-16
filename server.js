@@ -65,7 +65,7 @@ let html = /*html*/ `
           <!-- list of messages with random emojis -->
         </main>
         <footer>
-        <input type="checkbox" id="toggle" />
+        <input aria-label="hide or show form" type="checkbox" id="toggle" />
         <form class="flex col" action="/" method="post">
             <label for="name">Name 📛 :</label>
             <input id="name" type="text" name="name" placeholder="Name ...">
