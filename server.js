@@ -48,7 +48,7 @@ let html = /*html*/ `
             <label for="name">Name:</label>
             <input id="name" type="text" name="name" placeholder="Name ...">
             <label for="message"> Message: </label>
-            <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ...">
+            <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." >
             </textarea>
             <button type="submit" class="submit-b"> ☑️ </button>
           </form>
