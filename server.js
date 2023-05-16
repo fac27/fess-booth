@@ -15,7 +15,6 @@ server.get('/', (req, res) => {
 server.post('/', bodyParser, (req, res) => {
   const { name, message } = req.body;
   const created = Date.now();
-
   messages.push({ name, message, created });
   res.redirect('/');
 });
