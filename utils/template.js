@@ -73,7 +73,7 @@ const postItem = (post) => {
   return `
   <article class="card">
     <button > ${sanitize(post.message)} </button>
-    <p> ${sanitise(post.name)} @ ${prettyDate}</p>
+    <p> ${sanitize(post.name)} @ ${prettyDate}</p>
   </article>
   `;
 }
