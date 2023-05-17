@@ -31,7 +31,6 @@ server.post("/", bodyParser, (req, res) => {
     const created = Date.now();
     messages.push({ name, message, created });
     saveMessages(messages);
-    //updateFile(messages);
     res.redirect("/");
   }
 });
