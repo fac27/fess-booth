@@ -13,12 +13,12 @@ body * {
   font-family: "Work Sans", sans-serif;
 }
 
-button {
+/* button {
   color: inherit;
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
+} */
 
 main {
   align-items: center;
@@ -153,6 +153,13 @@ footer #toggle:checked {
 
 .submit-button {
   font-size: 2rem;
+}
+
+.post-text2 {
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
