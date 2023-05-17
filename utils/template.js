@@ -1,15 +1,15 @@
-const sanitize = require("./sanitize.js");
-const validate = require("./validate.js");
+const sanitize = require('./sanitize.js');
+const validate = require('./validate.js');
 
 function home(posts, errors = {}, values = {}) {
-  const title = "All posts";
+  const title = 'All posts';
   const content = /*html*/ `
     <header>
       <h1>(con)fess-booth</h1>
     </header>
       <main class="flex col">
         <!-- list of messages -->
-        ${posts.map(postItem).join("")}
+        ${posts.map(postItem).join('')}
       </main>
       <footer>
         <input aria-label="hide or show form" type="checkbox" id="toggle"/>
@@ -17,7 +17,7 @@ function home(posts, errors = {}, values = {}) {
         <form class="flex col" action="/" method="post">
           <label for="name">Name 📛 :</label>
           <input id="name" type="text" name="name" placeholder="Name ..." value = "${
-            values.name ? sanitize(values.name) : ""
+            values.name ? sanitize(values.name) : ''
           }">
           <p>${validate(errors.name)}</p>
           <label for="message"> Message 💬 : </label>
@@ -25,7 +25,8 @@ function home(posts, errors = {}, values = {}) {
             const counter = document.getElementById('counter');
             const message = document.getElementById('message');
             counter.value = message.value.length + '/200';
-          ">${values.message ? sanitize(values.message) : ""}</textarea>
+          ">${values.message ? sanitize(values.message) : ''}</textarea>
+          <input id="counter" name="counter" value="0/200" readonly>
           <p>${validate(errors.message)}</p>
           <button type="submit" class="submit-button mt"> 🆗 </button>
         </form>
@@ -37,11 +38,12 @@ function home(posts, errors = {}, values = {}) {
 
 const postItem = (post) => {
   const date = new Date(post.created);
-  const prettyDate = date.toLocaleString("en-GB");
+  const prettyDate = date.toLocaleString('en-GB');
 
-  return /*html*/`
+  return /*html*/ `
   <article class="card">
-    <button type = "button"> ${post.emoji} ${sanitize(post.message)} </button>
+    <button id="delete"> ❌ </button>
+    <button id="post"> ${post.emoji} ${sanitize(post.message)} </button>
     <p> anonymous @ ${prettyDate}</p>
   </article>
   `;
