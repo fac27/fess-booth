@@ -1,6 +1,7 @@
 const express = require("express");
 const server = express();
 const { home } = require("./utils/template.js");
+const { saveMessages, updateFile } = require("./utils/messageStore.js");
 
 server.use(express.static("public"));
 const bodyParser = express.urlencoded({ extended: true });
@@ -29,6 +30,8 @@ server.post("/", bodyParser, (req, res) => {
   }else{
     const created = Date.now();
     messages.push({ name, message, created });
+    saveMessages(messages);
+    updateFile(message); 
     res.redirect("/");
   }
 });
