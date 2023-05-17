@@ -1,5 +1,4 @@
-// const sanitize = require("./sanitize.js");
-// const validate = require("./validate.js");
+const sanitize = require("./sanitize.js");
 
 const demoMessages = /*html*/ `
 <article class="card">

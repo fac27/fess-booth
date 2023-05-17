@@ -4,5 +4,5 @@ export const validate = (message) => {
   } else {
     return '';
   }
-};
+}
 module.exports = validate;
