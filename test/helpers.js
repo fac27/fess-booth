@@ -1,10 +1,10 @@
-const server = require("../server.js");
+const server = require('../server');
 
 async function request(pathname, options = {}) {
   const app = server.listen(0);
   const { port } = app.address();
   const url = new URL(pathname, `http://localhost:${port}`);
-  options.headers = { ...options.headers, connection: "close" };
+  options.headers = { ...options.headers };
   const response = await fetch(url, options);
   app.close();
   const body = await response.text();
@@ -13,9 +13,9 @@ async function request(pathname, options = {}) {
 }
 
 function assert_attr(body, name, expected, msg) {
-  const get_attr = new RegExp(`${name}="([^"]*)"`, "i");
+  const get_attr = new RegExp(`${name}="([^"]*)"`, 'i');
   const match = body.match(get_attr);
-  if (!match && !expected.includes("")) {
+  if (!match && !expected.includes('')) {
     console.log({ name, expected, match });
     throw new Error(msg);
   }
