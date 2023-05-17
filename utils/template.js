@@ -35,7 +35,7 @@ const demoMessages = /*html*/ `
 </article>
 `;
 
-function home(posts) {
+const home = (posts, errors = {}, values ={}) => {
   const title = "All posts";
   const content = /*html*/ `
     <header>
@@ -52,9 +52,11 @@ function home(posts) {
         <input aria-label="hide or show form" type="checkbox" id="toggle" display="none"/>
         <form class="flex col" action="/" method="post">
           <label for="name">Name 📛 :</label>
-          <input id="name" type="text" name="name" placeholder="Name ...">
+          <input id="name" type="text" name="name" placeholder="Name ..." value = "${values.name ? sanitize(values.name) : ""}">
+          <p>${validation(errors.name)}</p>
           <label for="message"> Message 💬 : </label>
-          <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." ></textarea>
+          <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." >${values.message ? sanitize(values.message) : ""}</textarea>
+          <p>${validation(errors.message)}</p>
           <button type="submit" class="submit-button mt"> 🆗 </button>
         </form>
       </footer>
@@ -67,12 +69,10 @@ function postItem(post) {
   const date = new Date(post.created);
   const prettyDate = date.toLocaleString("en-GB");
 
-  const newMessage = sanitize(post.message);
-
   return `
   <article class="card">
-    <button > ${newMessage} </button>
-    <p> ${post.name} @ ${prettyDate}</p>
+    <button > ${sanitize(post.message)} </button>
+    <p> ${sanitise(post.name)} @ ${prettyDate}</p>
   </article>
   `;
 }
