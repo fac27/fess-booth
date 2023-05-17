@@ -21,7 +21,7 @@ function home(posts, errors = {}, values = {}) {
           }">
           <p>${validate(errors.name)}</p>
           <label for="message"> Message 💬 : </label>
-          <textarea id="message" rows="4" cols="50" name="message" minlength="50" maxlength="200" placeholder="Type here ..." oninput="
+          <textarea id="message" rows="4" cols="50" name="message" minlength="10" maxlength="200" placeholder="Type here ..." oninput="
             const counter = document.getElementById('counter');
             const message = document.getElementById('message');
             counter.innerHTML = message.value.length + '/200';
