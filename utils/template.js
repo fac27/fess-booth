@@ -1,55 +1,18 @@
 const sanitize = require("./sanitize.js");
 
-const demoMessages = /*html*/ `
-<article class="card">
-<button > 🎫 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🍖 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🎲 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 👨‍🦰 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🎫 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🍖 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🎲 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 👨‍🦰 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-`;
-
 function home(posts) {
   const title = "All posts";
   const content = /*html*/ `
     <header>
       <h1>(con)fess-booth</h1>
         </header>
-      <main class="flex col">
-        <!-- list of messages with random emojis -->
-        <!-- strethc goals: click button to expand / shrink post -->
-        <!-- ${demoMessages} -->
+        <main class="flex col">
+        <!-- list of messages -->
         ${posts.map(postItem).join("")}
-        <!-- list of messages with random emojis -->
       </main>
       <footer>
-        <input aria-label="hide or show form" type="checkbox" id="toggle" display="none"/>
+        <input aria-label="hide or show form" type="checkbox" id="toggle"/>
+        <label for="toggle"></label>
         <form class="flex col" action="/" method="post">
           <label for="name">Name 📛 :</label>
           <input id="name" type="text" name="name" placeholder="Name ...">
