@@ -24,9 +24,9 @@ function home(posts, errors = {}, values = {}) {
           <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." oninput="
             const counter = document.getElementById('counter');
             const message = document.getElementById('message');
-            counter.value = message.value.length + '/200';
+            counter.innerHTML = message.value.length + '/200';
           ">${values.message ? sanitize(values.message) : ''}</textarea>
-          <input id="counter" name="counter" value="0/200" readonly>
+          <b id="counter" name="counter"> 0/200 </b>
           <p>${validate(errors.message)}</p>
           <button type="submit" class="submit-button mt"> 🆗 </button>
         </form>
@@ -42,8 +42,10 @@ const postItem = (post) => {
 
   return /*html*/ `
   <article class="card">
-    <button id="delete"> ❌ </button>
-    <button id="post"> ${sanitize(post.message)} </button>
+    <form action="/delete/${post.emoji}" method="post"> 
+      <button id="delete" type="submit"> ❌ </button>
+    </form>
+    <button id="post"> ${post.emoji} ${sanitize(post.message)} </button>
     <p> anonymous @ ${prettyDate}</p>
   </article>
   `;

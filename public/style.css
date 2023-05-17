@@ -72,6 +72,15 @@ article button {
   font-size: 1rem;
 }
 
+form b {
+  align-self: end;
+  margin: 0.3rem;
+}
+
+form #delete {
+  float: right;
+}
+
 /* toggle */
 
 /* opacity fior accesibilty reasons */
