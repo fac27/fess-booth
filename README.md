@@ -1,4 +1,4 @@
-# fess-booth
+# Fess-Booth
 This website allows you to enter a name and a message for other to read. Although you enter a name, the name will remain anonymous to other users - to replicate the experience of a confessional booth.
 
 Our first project as part of FAC's full time program was to create a microblogging side Our goal was to allow users to submit their own posts and view all the posts submitted by others.
@@ -46,6 +46,11 @@ to run the tests enter the following in the terminal:
 ```terminal 
 node --test
 ```
-#### Things that work
+both tests should pass successfully 
+### Things that worked well
 
-#### Things that don't work
+- having two branches (development to push to & final review and main to deploy)
+
+### Things that don't work well
+
+- Git did not work well
