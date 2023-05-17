@@ -47,5 +47,7 @@ to run the tests enter the following in the terminal:
 node --test
 ```
 #### Things that work
+Everything ofc :) Execept we dont like the form drop down floating on the right of the screen
 
 #### Things that don't work
+Persistent posts/data across server restarts. (hack to avoid DB could include a git add data; git commit and a git push so we store the data on the repo ready) (maybe :/ )
