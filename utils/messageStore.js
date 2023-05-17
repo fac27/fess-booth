@@ -31,5 +31,4 @@ const updateFile = async (data) => {
     }
 }
 
-module.exports = {saveMessages};
-module.exports = {updateFile};
+module.exports = {saveMessages, updateFile};
