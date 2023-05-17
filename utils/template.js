@@ -12,9 +12,9 @@ function home(posts, errors = {}, values = {}) {
         ${posts.map(postItem).join('')}
       </main>
       <footer>
-      <input aria-label="hide or show form" type="checkbox" id="toggle"/>
-      <label for="toggle"></label>
-      <form class="flex col" id="post-submit" action="/" method="post">
+        <input aria-label="hide or show form" type="checkbox" id="toggle"/>
+        <label for="toggle"></label>
+        <form class="flex col" id="post-submit" action="/" method="post">
           <label for="name">Name 📛 :</label>
           <input id="name" type="text" name="name" placeholder="Name ..." value = "${
             values.name ? sanitize(values.name) : ''
