@@ -1,5 +1,5 @@
-const sanitize = require("./sanitize.js");
-const validate = require("./validate.js")
+// const sanitize = require("./sanitize.js");
+// const validate = require("./validate.js");
 
 const demoMessages = /*html*/ `
 <article class="card">
@@ -66,7 +66,7 @@ const home = (posts, errors = {}, values ={}) => {
   return layout(title, content);
 }
 
-function postItem(post) {
+const postItem = (post) => {
   const date = new Date(post.created);
   const prettyDate = date.toLocaleString("en-GB");
 
@@ -78,7 +78,7 @@ function postItem(post) {
   `;
 }
 
-function layout(title, content) {
+const layout = (title, content) => {
   return /*html*/ `
     <!doctype html>
     <html>
