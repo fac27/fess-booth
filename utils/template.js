@@ -1,12 +1,12 @@
-const sanitize = require("./sanitize.js");
+const sanitize = require('./sanitize.js');
 
 function home(posts) {
-  const title = "All posts";
+  const title = 'All posts';
   const content = /*html*/ `
     <header>
       <h1>(con)fess-booth</h1>
-        </header>
-        <main class="flex col">
+    </header>
+      <main class="flex col">
         <!-- list of messages -->
         ${posts.map(postItem).join("")}
       </main>
@@ -17,7 +17,12 @@ function home(posts) {
           <label for="name">Name 📛 :</label>
           <input id="name" type="text" name="name" placeholder="Name ...">
           <label for="message"> Message 💬 : </label>
-          <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." ></textarea>
+          <textarea id="message" rows="4" cols="50" maxlength="200" name="message" placeholder="Type here ..." oninput="
+            const counter = document.getElementById('counter');
+            const message = document.getElementById('message');
+            counter.value = message.value.length + '/200';
+          "></textarea>
+          <input id="counter" value="0/200" disabled>
           <button type="submit" class="submit-button mt"> 🆗 </button>
         </form>
       </footer>
@@ -28,7 +33,7 @@ function home(posts) {
 
 function postItem(post) {
   const date = new Date(post.created);
-  const prettyDate = date.toLocaleString("en-GB");
+  const prettyDate = date.toLocaleString('en-GB');
 
   const newMessage = sanitize(post.message);
 
