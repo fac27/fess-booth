@@ -2,9 +2,9 @@ const sanitize = (inputString) => {
   let sanitizedString = inputString;
   
   const characterMap = {
+    '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
-    '&': '&amp;',
     '"': '&quot;',
     "'": '&#x27;',
     "/": '&#x2F;',
@@ -13,7 +13,6 @@ const sanitize = (inputString) => {
     "!": '&#x21;',
     "(": '&#x28;',
     ")": '&#x29;',
-    ";": '&#x3B;',
     "+": '&#x2B;',
     "-": '&#x2D;'
   };
@@ -22,7 +21,6 @@ const sanitize = (inputString) => {
     const replacement = characterMap[character];
     sanitizedString = sanitizedString.replace(new RegExp("\\"+ character, 'g'), replacement);
   }
-
   return sanitizedString;
 };
 
