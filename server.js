@@ -20,6 +20,9 @@ server.post("/", bodyParser, (req, res) => {
   if(!name){
     errors.name = "please enter your name";
   }
+  if(!message){
+    errors.message = "please enter a message";
+  }
   if(Object.keys(errors).length){
     const body = home(messages,errors,req.body);
     res.status(400).send(body);
