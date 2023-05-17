@@ -5,3 +5,4 @@ export const validate = (message) => {
     return '';
   }
 };
+module.exports = validate;
