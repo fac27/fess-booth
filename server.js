@@ -7,6 +7,8 @@ server.use(express.static('public'));
 const bodyParser = express.urlencoded({ extended: true });
 
 const messages = [];
+// sets store unique values of any type
+const emojiSet = new Set();
 
 server.get('/', (req, res) => {
   const body = home(messages);
@@ -27,7 +29,16 @@ server.post('/', bodyParser, (req, res) => {
     const body = home(messages, errors, req.body);
     res.status(400).send(body);
   } else {
-    emoji = getEmoji();
+    let emoji = getEmoji();
+    let newEmoji = false;
+    while (!newEmoji) {
+      if (emojiSet.has(emoji)) {
+        emoji = getEmoji();
+      } else {
+        newEmoji = true;
+      }
+    }
+    emojiSet.add(emoji);
     const created = Date.now();
     messages.push({ name, emoji, message, created });
     res.redirect('/');
