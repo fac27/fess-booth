@@ -1,4 +1,4 @@
-const sanitize = require("./sanitize.js");
+// const sanitize = require("./sanitize.js");
 
 const demoMessages = /*html*/ `
 <article class="card">
