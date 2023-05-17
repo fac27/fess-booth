@@ -29,7 +29,6 @@ footer {
   position: fixed;
   left: 0px;
   bottom: 0px;
-  max-height: 20rem;
   width: 100vw;
   padding-block: 1rem;
   background-color: var(--background);
