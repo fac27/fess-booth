@@ -21,7 +21,7 @@ server.post("/", bodyParser, (req, res) => {
     errors.name = "please enter your name";
   }
   if(Object.keys(errors).length){
-    const body = home(posts,errors,req.body);
+    const body = home(messages,errors,req.body);
     req.statusCode(400).send(body);
   }else{
     const created = Date.now();
