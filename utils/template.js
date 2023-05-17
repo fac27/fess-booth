@@ -1,62 +1,29 @@
 const sanitize = require("./sanitize.js");
 const validate = require("./validate.js");
 
-const demoMessages = /*html*/ `
-<article class="card">
-<button > 🎫 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🍖 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🎲 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 👨‍🦰 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🎫 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🍖 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 🎲 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-<article class="card">
-<button > 👨‍🦰 short summary ...</button>
-<p>user @ ${new Date().toISOString()}</p>
-</article>
-`;
-
-const home = (posts, errors = {}, values ={}) => {
+function home(posts) {
   const title = "All posts";
   const content = /*html*/ `
     <header>
       <h1>(con)fess-booth</h1>
-        </header>
+    </header>
       <main class="flex col">
-        <!-- list of messages with random emojis -->
-        <!-- strethc goals: click button to expand / shrink post -->
-        <!-- ${demoMessages} -->
+        <!-- list of messages -->
         ${posts.map(postItem).join("")}
-        <!-- list of messages with random emojis -->
       </main>
       <footer>
-        <input aria-label="hide or show form" type="checkbox" id="toggle" display="none"/>
+        <input aria-label="hide or show form" type="checkbox" id="toggle"/>
+        <label for="toggle"></label>
         <form class="flex col" action="/" method="post">
           <label for="name">Name 📛 :</label>
           <input id="name" type="text" name="name" placeholder="Name ..." value = "${values.name ? sanitize(values.name) : ""}">
           <p>${validate(errors.name)}</p>
           <label for="message"> Message 💬 : </label>
-          <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." >${values.message ? sanitize(values.message) : ""}</textarea>
+          <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." oninput="
+            const counter = document.getElementById('counter');
+            const message = document.getElementById('message');
+            counter.value = message.value.length + '/200';
+          ">${values.message ? sanitize(values.message) : ""}</textarea>
           <p>${validate(errors.message)}</p>
           <button type="submit" class="submit-button mt"> 🆗 </button>
         </form>
@@ -73,7 +40,7 @@ const postItem = (post) => {
   return `
   <article class="card">
     <button type = "button"> ${sanitize(post.message)} </button>
-    <p> ${sanitize(post.name)} @ ${prettyDate}</p>
+    <p> anonymous @ ${prettyDate}</p>
   </article>
   `;
 }
