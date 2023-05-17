@@ -25,6 +25,7 @@ server.post('/', bodyParser, (req, res) => {
   if (!message) {
     errors.message = 'please enter a message';
   }
+
   if (Object.keys(errors).length) {
     const body = home(messages, errors, req.body);
     res.status(400).send(body);
