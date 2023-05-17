@@ -22,7 +22,7 @@ server.post("/", bodyParser, (req, res) => {
   }
   if(Object.keys(errors).length){
     const body = home(messages,errors,req.body);
-    res.statusCode(400).send(body);
+    res.status(400).send(body);
   }else{
     const created = Date.now();
     messages.push({ name, message, created });
