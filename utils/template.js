@@ -1,7 +1,7 @@
-const sanitize = require('./sanitize.js');
+const sanitize = require("./sanitize.js");
 
 function home(posts) {
-  const title = 'All posts';
+  const title = "All posts";
   const content = /*html*/ `
     <header>
       <h1>(con)fess-booth</h1>
@@ -33,13 +33,13 @@ function home(posts) {
 
 function postItem(post) {
   const date = new Date(post.created);
-  const prettyDate = date.toLocaleString('en-GB');
+  const prettyDate = date.toLocaleString("en-GB");
 
   const newMessage = sanitize(post.message);
 
   return `
   <article class="card">
-    <button > ${newMessage} </button>
+    <button > ${post.emoji} ${newMessage} </button>
     <p> ${post.name} @ ${prettyDate}</p>
   </article>
   `;
