@@ -31,7 +31,7 @@ footer {
   bottom: 0px;
   width: 100vw;
   padding-block: 1rem;
-  background-color: var(--background);
+  background-color: rgba(30, 30, 30, 0.5);
 }
 
 header h1 {

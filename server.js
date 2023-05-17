@@ -1,5 +1,6 @@
 const express = require("express");
 const server = express();
+const getEmoji = require("get-random-emoji");
 const { home } = require("./utils/template.js");
 
 server.use(express.static("public"));
@@ -13,22 +14,22 @@ server.get("/", (req, res) => {
 });
 
 server.post("/", bodyParser, (req, res) => {
-  const name = req.body.name;
-  const message = req.body.message;
+  const { name, message } = req.body;
 
   const errors = {};
-  if(!name){
+  if (!name) {
     errors.name = "please enter your name";
   }
-  if(!message){
+  if (!message) {
     errors.message = "please enter a message";
   }
-  if(Object.keys(errors).length){
-    const body = home(messages,errors,req.body);
+  if (Object.keys(errors).length) {
+    const body = home(messages, errors, req.body);
     res.status(400).send(body);
-  }else{
+  } else {
+    emoji = getEmoji();
     const created = Date.now();
-    messages.push({ name, message, created });
+    messages.push({ name, emoji, message, created });
     res.redirect("/");
   }
 });
