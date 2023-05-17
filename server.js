@@ -1,6 +1,6 @@
 const express = require('express');
 const server = express();
-const getEmoji = require('get-random-emoji');
+// const getEmoji = require('get-random-emoji');
 const { home } = require('./utils/template.js');
 
 server.use(express.static('public'));

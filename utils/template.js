@@ -43,7 +43,7 @@ const postItem = (post) => {
   return /*html*/ `
   <article class="card">
     <button id="delete"> ❌ </button>
-    <button id="post"> ${post.emoji} ${sanitize(post.message)} </button>
+    <button id="post"> ${sanitize(post.message)} </button>
     <p> anonymous @ ${prettyDate}</p>
   </article>
   `;

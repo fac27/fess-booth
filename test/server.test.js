@@ -9,7 +9,7 @@ test('POST without nickname re-renders page with error', async () => {
     body: 'nickname=&message=hello',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
   });
-  assert.equal(status, 200);
+  assert.equal(status, 400);
   assert.match(body, /<form/i, 'Page should include the form');
   assert.match(
     body,
