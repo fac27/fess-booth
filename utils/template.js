@@ -53,10 +53,10 @@ const home = (posts, errors = {}, values ={}) => {
         <form class="flex col" action="/" method="post">
           <label for="name">Name 📛 :</label>
           <input id="name" type="text" name="name" placeholder="Name ..." value = "${values.name ? sanitize(values.name) : ""}">
-          <p>${validation(errors.name)}</p>
+          <p>${validate(errors.name)}</p>
           <label for="message"> Message 💬 : </label>
           <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." >${values.message ? sanitize(values.message) : ""}</textarea>
-          <p>${validation(errors.message)}</p>
+          <p>${validate(errors.message)}</p>
           <button type="submit" class="submit-button mt"> 🆗 </button>
         </form>
       </footer>
