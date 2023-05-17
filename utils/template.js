@@ -14,7 +14,7 @@ function home(posts, errors = {}, values = {}) {
       <footer>
         <input aria-label="hide or show form" type="checkbox" id="toggle"/>
         <label for="toggle"></label>
-        <form class="flex col" action="/" method="post">
+        <form class="flex col" id="post-submit" action="/" method="post">
           <label for="name">Name 📛 :</label>
           <input id="name" type="text" name="name" placeholder="Name ..." value = "${
             values.name ? sanitize(values.name) : ''
@@ -24,8 +24,9 @@ function home(posts, errors = {}, values = {}) {
           <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." oninput="
             const counter = document.getElementById('counter');
             const message = document.getElementById('message');
-            counter.value = message.value.length + '/200';
+            counter.innerHTML = message.value.length + '/200';
           ">${values.message ? sanitize(values.message) : ''}</textarea>
+          <b id="counter" name="counter"> 0/200 </b>
           <p>${validate(errors.message)}</p>
           <button type="submit" class="submit-button mt"> 🆗 </button>
         </form>
@@ -39,9 +40,12 @@ const postItem = (post) => {
   const date = new Date(post.created);
   const prettyDate = date.toLocaleString('en-GB');
 
-  return /*html*/`
+  return /*html*/ `
   <article class="card">
-    <p class="post-text"> ${sanitize(post.message)} </p>
+    <form action="/delete/${post.emoji}" method="post"> 
+      <button id="delete" type="submit"> ❌ </button>
+    </form>
+    <button id="post"> ${post.emoji} ${sanitize(post.message)} </button>
     <p> anonymous @ ${prettyDate}</p>
   </article>
   `;
