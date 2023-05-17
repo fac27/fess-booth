@@ -15,10 +15,23 @@ server.get("/", (req, res) => {
 
 server.post("/", bodyParser, (req, res) => {
   const { name, message } = req.body;
-  const created = Date.now();
-  emoji = getEmoji();
-  messages.push({ name, emoji, message, created });
-  res.redirect("/");
+
+  const errors = {};
+  if (!name) {
+    errors.name = "please enter your name";
+  }
+  if (!message) {
+    errors.message = "please enter a message";
+  }
+  if (Object.keys(errors).length) {
+    const body = home(messages, errors, req.body);
+    res.status(400).send(body);
+  } else {
+    emoji = getEmoji();
+    const created = Date.now();
+    messages.push({ name, emoji, message, created });
+    res.redirect("/");
+  }
 });
 
 module.exports = server;
