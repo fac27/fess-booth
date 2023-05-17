@@ -1,4 +1,5 @@
 const sanitize = require("./sanitize.js");
+const validate = require("./validate.js");
 
 function home(posts) {
   const title = "All posts";
@@ -15,14 +16,15 @@ function home(posts) {
         <label for="toggle"></label>
         <form class="flex col" action="/" method="post">
           <label for="name">Name 📛 :</label>
-          <input id="name" type="text" name="name" placeholder="Name ...">
+          <input id="name" type="text" name="name" placeholder="Name ..." value = "${values.name ? sanitize(values.name) : ""}">
+          <p>${validate(errors.name)}</p>
           <label for="message"> Message 💬 : </label>
-          <textarea id="message" rows="4" cols="50" maxlength="200" name="message" placeholder="Type here ..." oninput="
+          <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." oninput="
             const counter = document.getElementById('counter');
             const message = document.getElementById('message');
             counter.value = message.value.length + '/200';
-          "></textarea>
-          <input id="counter" value="0/200" disabled>
+          ">${values.message ? sanitize(values.message) : ""}</textarea>
+          <p>${validate(errors.message)}</p>
           <button type="submit" class="submit-button mt"> 🆗 </button>
         </form>
       </footer>
@@ -31,21 +33,19 @@ function home(posts) {
   return layout(title, content);
 }
 
-function postItem(post) {
+const postItem = (post) => {
   const date = new Date(post.created);
   const prettyDate = date.toLocaleString("en-GB");
 
-  const newMessage = sanitize(post.message);
-
   return `
   <article class="card">
-    <button > ${newMessage} </button>
+    <button type = "button"> ${sanitize(post.message)} </button>
     <p> anonymous @ ${prettyDate}</p>
   </article>
   `;
 }
 
-function layout(title, content) {
+const layout = (title, content) => {
   return /*html*/ `
     <!doctype html>
     <html>
