@@ -12,7 +12,7 @@ server.get("/", (req, res) => {
   res.send(body);
 });
 
-server.post("/", bodyParser, (req, res) => {
+serer.post("/", bodyParser, (req, res) => {
   const name = req.body.name;
   const message = req.body.message;
 
