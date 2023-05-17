@@ -39,9 +39,9 @@ const postItem = (post) => {
   const date = new Date(post.created);
   const prettyDate = date.toLocaleString('en-GB');
 
-  return `
+  return /*html*/`
   <article class="card">
-    <button type = "button"> ${sanitize(post.message)} </button>
+    <p class="post-text"> ${sanitize(post.message)} </p>
     <p> anonymous @ ${prettyDate}</p>
   </article>
   `;
