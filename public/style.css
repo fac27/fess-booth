@@ -10,7 +10,7 @@ body {
 }
 
 body * {
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 button {
@@ -48,7 +48,7 @@ form.flex {
   height: auto;
   transform: translateX(-50%);
   padding-block: 1rem;
-  transition: all 1s linear;
+  /* transition: all 1s linear; */
 }
 
 input,
@@ -68,6 +68,19 @@ form label:not(:first-child) {
   margin-top: 1rem;
 }
 
+article button {
+  font-size: 1rem;
+}
+
+form b {
+  align-self: end;
+  margin: 0.3rem;
+}
+
+form #delete {
+  float: right;
+}
+
 /* toggle */
 
 /* opacity fior accesibilty reasons */
@@ -82,7 +95,7 @@ form label:not(:first-child) {
 }
 
 #toggle ~ label::before {
-  content: "🔽";
+  content: '🔽';
   display: inline-block;
   height: 16px;
   width: 16px;
@@ -90,7 +103,7 @@ form label:not(:first-child) {
 }
 
 #toggle:checked ~ label::before {
-  content: "🔼";
+  content: '🔼';
 }
 
 /* top is for transition */

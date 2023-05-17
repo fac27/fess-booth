@@ -1,36 +1,57 @@
-const express = require("express");
+const express = require('express');
 const server = express();
-const { home } = require("./utils/template.js");
+const getEmoji = require('get-random-emoji');
+const { home } = require('./utils/template.js');
 
-server.use(express.static("public"));
+server.use(express.static('public'));
 const bodyParser = express.urlencoded({ extended: true });
 
 const messages = [];
+// sets store unique values of any type
+const emojiSet = new Set();
 
-server.get("/", (req, res) => {
+server.get('/', (req, res) => {
   const body = home(messages);
   res.send(body);
 });
 
-server.post("/", bodyParser, (req, res) => {
-  const name = req.body.name;
-  const message = req.body.message;
+server.post('/', bodyParser, (req, res) => {
+  const { name, message } = req.body;
 
   const errors = {};
-  if(!name){
-    errors.name = "please enter your name";
+  if (!name) {
+    errors.name = 'please enter your name';
   }
-  if(!message){
-    errors.message = "please enter a message";
+  if (!message) {
+    errors.message = 'please enter a message';
   }
-  if(Object.keys(errors).length){
-    const body = home(messages,errors,req.body);
+
+  if (Object.keys(errors).length) {
+    const body = home(messages, errors, req.body);
     res.status(400).send(body);
-  }else{
+  } else {
+    let emoji = getEmoji();
+    let newEmoji = false;
+    while (!newEmoji) {
+      if (emojiSet.has(emoji)) {
+        emoji = getEmoji();
+      } else {
+        newEmoji = true;
+      }
+    }
+    emojiSet.add(emoji);
     const created = Date.now();
-    messages.push({ name, message, created });
-    res.redirect("/");
+    messages.push({ name, emoji, message, created });
+    res.redirect('/');
   }
+});
+
+server.post('/delete/:emoji', (req, res) => {
+  const { emoji } = req.params;
+  console.log(emoji);
+  const index = messages.findIndex((message) => message.emoji === emoji);
+  messages.splice(index, 1);
+  res.redirect('/');
 });
 
 module.exports = server;
