@@ -1,4 +1,4 @@
-const server = require('../server');
+const server = require('../src/server');
 
 async function request(pathname, options = {}) {
   const app = server.listen(0);
@@ -16,7 +16,6 @@ function assert_attr(body, name, expected, msg) {
   const get_attr = new RegExp(`${name}="([^"]*)"`, 'i');
   const match = body.match(get_attr);
   if (!match && !expected.includes('')) {
-    console.log({ name, expected, match });
     throw new Error(msg);
   }
   if (match) {
