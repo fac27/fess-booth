@@ -1,37 +1,38 @@
-const express = require("express");
+const express = require('express');
 const server = express();
-const { saveMessages, readMessages } = require("./utils/messageStore.js");
-const getEmoji = require("get-random-emoji");
-const { home } = require("./utils/template.js");
+const { saveMessages, readMessages } = require('../utils/messageStore.js');
+const getEmoji = require('get-random-emoji');
+const { home } = require('../utils/template.js');
 
-server.use(express.static("public"));
+server.use(express.static('public'));
 const bodyParser = express.urlencoded({ extended: true });
 
 // sets store unique values of any type
 const emojiSet = new Set();
 
-server.get("/", async (req, res) => {
+server.get('/', async (req, res) => {
   // Check for messages.json file and read it if it exists
   let messages;
+  console.log(messages);
   try {
     messages = await readMessages();
   } catch (err) {
-    console.log("Error reading messages: " + err);
+    console.log('Error reading messages: ' + err);
     messages = [];
   }
   const body = home(messages);
   res.send(body);
 });
 
-server.post("/", bodyParser, async (req, res) => {
+server.post('/', bodyParser, async (req, res) => {
   const { name, message } = req.body;
 
   const errors = {};
   if (!name) {
-    errors.name = "please enter your name";
+    errors.name = 'please enter your name';
   }
   if (!message) {
-    errors.message = "please enter a message";
+    errors.message = 'please enter a message';
   }
 
   if (Object.keys(errors).length) {
@@ -55,17 +56,17 @@ server.post("/", bodyParser, async (req, res) => {
     try {
       messages = await readMessages();
     } catch (err) {
-      console.log("Error reading messages: " + err);
+      console.log('Error reading messages: ' + err);
       messages = [];
     }
 
     messages.push({ name, emoji, message, created });
     saveMessages(messages);
-    res.redirect("/");
+    res.redirect('/');
   }
 });
 
-server.post("/delete/:emoji", async (req, res) => {
+server.post('/delete/:emoji', async (req, res) => {
   const { emoji } = req.params;
   console.log(emoji);
 
@@ -74,14 +75,14 @@ server.post("/delete/:emoji", async (req, res) => {
   try {
     messages = await readMessages();
   } catch (err) {
-    console.log("Error reading messages: " + err);
+    console.log('Error reading messages: ' + err);
     messages = [];
   }
 
   const index = messages.findIndex((message) => message.emoji === emoji);
   messages.splice(index, 1);
   saveMessages(messages);
-  res.redirect("/");
+  res.redirect('/');
 });
 
 module.exports = server;

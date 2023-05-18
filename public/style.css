@@ -170,7 +170,6 @@ footer #toggle:checked {
   border: none;
   gap: 0rem;
   padding: 2rem;
-  scale: 0.75;
   /* transition: all 1s linear; */
 }
 
