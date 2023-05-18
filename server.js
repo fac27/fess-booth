@@ -1,6 +1,6 @@
 const express = require('express');
 const server = express();
-const { saveMessages } = require("./utils/messageStore.js");
+const { saveMessages } = require('./utils/messageStore.js');
 const getEmoji = require('get-random-emoji');
 const { home } = require('./utils/template.js');
 
@@ -51,7 +51,6 @@ server.post('/', bodyParser, (req, res) => {
 
 server.post('/delete/:emoji', (req, res) => {
   const { emoji } = req.params;
-  console.log(emoji);
   const index = messages.findIndex((message) => message.emoji === emoji);
   messages.splice(index, 1);
   saveMessages(messages);
