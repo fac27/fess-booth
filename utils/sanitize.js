@@ -1,5 +1,5 @@
 const sanitize = (inputString) => {
-  let sanitizedString = inputString;
+  const sanitizedString = inputString;
   
   const characterMap = {
     '&': '&amp;',
@@ -17,7 +17,7 @@ const sanitize = (inputString) => {
     "-": '&#x2D;'
   };
 
-  for (let character in characterMap) {
+  for (const character in characterMap) {
     const replacement = characterMap[character];
     sanitizedString = sanitizedString.replace(new RegExp("\\"+ character, 'g'), replacement);
   }
