@@ -31,24 +31,12 @@ footer {
   bottom: 0px;
   width: 100vw;
   padding-block: 1rem;
-  background-color: var(--background);
+  /* background-color: rgba(30, 30, 30, 0.5); */
 }
 
 header h1 {
   font-size: 4ex;
   margin: 2rem;
-}
-
-form.flex {
-  gap: 0rem;
-  max-width: 80%;
-  position: relative;
-  bottom: 0px;
-  left: 50%;
-  height: auto;
-  transform: translateX(-50%);
-  padding-block: 1rem;
-  /* transition: all 1s linear; */
 }
 
 input,
@@ -97,9 +85,11 @@ form #delete {
 #toggle ~ label::before {
   content: '🔽';
   display: inline-block;
+  position: relative;
+  top: 0px;
   height: 16px;
   width: 16px;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
 }
 
 #toggle:checked ~ label::before {
@@ -166,6 +156,22 @@ footer #toggle:checked {
 
 .submit-button {
   font-size: 2rem;
+}
+
+#post-submit {
+  position: relative;
+  bottom: 0px;
+  left: 50%;
+  height: auto;
+  transform: translateX(-50%);
+  color: var(--font);
+  font-size: 1rem;
+  background-color: rgba(30, 30, 30, 0.75);
+  border: none;
+  gap: 0rem;
+  padding: 2rem;
+  scale: 0.75;
+  /* transition: all 1s linear; */
 }
 
 @media screen and (min-width: 768px) {

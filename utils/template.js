@@ -14,14 +14,14 @@ function home(posts, errors = {}, values = {}) {
       <footer>
         <input aria-label="hide or show form" type="checkbox" id="toggle"/>
         <label for="toggle"></label>
-        <form class="flex col" action="/" method="post">
+        <form class="flex col" id="post-submit" action="/" method="post">
           <label for="name">Name 📛 :</label>
           <input id="name" type="text" name="name" placeholder="Name ..." value = "${
             values.name ? sanitize(values.name) : ''
           }">
           <p>${validate(errors.name)}</p>
           <label for="message"> Message 💬 : </label>
-          <textarea id="message" rows="4" cols="50" name="message" placeholder="Type here ..." oninput="
+          <textarea id="message" rows="4" cols="50" name="message" minlength="10" maxlength="200" placeholder="Type here ..." oninput="
             const counter = document.getElementById('counter');
             const message = document.getElementById('message');
             counter.innerHTML = message.value.length + '/200';
@@ -42,7 +42,7 @@ const postItem = (post) => {
 
   return /*html*/ `
   <article class="card">
-    <form action="/delete/${post.emoji}" method="post"> 
+    <form action="/delete/${post.emoji}" method="post">
       <button id="delete" type="submit"> ❌ </button>
     </form>
     <button id="post"> ${post.emoji} ${sanitize(post.message)} </button>

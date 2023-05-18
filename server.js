@@ -1,5 +1,6 @@
 const express = require('express');
 const server = express();
+const { saveMessages } = require("./utils/messageStore.js");
 const getEmoji = require('get-random-emoji');
 const { home } = require('./utils/template.js');
 
@@ -41,7 +42,9 @@ server.post('/', bodyParser, (req, res) => {
     }
     emojiSet.add(emoji);
     const created = Date.now();
+
     messages.push({ name, emoji, message, created });
+    saveMessages(messages);
     res.redirect('/');
   }
 });
@@ -51,6 +54,7 @@ server.post('/delete/:emoji', (req, res) => {
   console.log(emoji);
   const index = messages.findIndex((message) => message.emoji === emoji);
   messages.splice(index, 1);
+  saveMessages(messages);
   res.redirect('/');
 });
 
