@@ -1,8 +1,8 @@
 const express = require('express');
 const server = express();
-const { saveMessages } = require('./utils/messageStore.js');
+const { saveMessages } = require('../utils/messageStore.js');
 const getEmoji = require('get-random-emoji');
-const { home } = require('./utils/template.js');
+const { home } = require('../utils/template.js');
 
 server.use(express.static('public'));
 const bodyParser = express.urlencoded({ extended: true });
