@@ -1,5 +1,5 @@
 const sanitize = (inputString) => {
-  const sanitizedString = inputString;
+  let sanitizedString = inputString;
   
   const characterMap = {
     '&': '&amp;',
