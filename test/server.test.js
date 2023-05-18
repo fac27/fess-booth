@@ -21,7 +21,6 @@ test('POST without name or message re-renders page with both errors', async () =
   const { status, body } = await request('/', {
     method: 'POST',
     body: 'nickname=&message=',
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
   });
   assert.equal(status, 400);
   assert.match(body, /<form/i, 'Page should include the form');

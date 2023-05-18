@@ -1,4 +1,4 @@
-const {readFile, writeFile, appendFile} = require("fs");
+const { readFile, writeFile } = require("fs");
 
 const filePath = "./data/messages.json";
 
