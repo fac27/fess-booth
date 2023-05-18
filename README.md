@@ -46,6 +46,10 @@ to run the tests enter the following in the terminal:
 ```terminal 
 node --test
 ```
+
+P.S: The test for the /delete handler is currently not working :(
+
+
 both tests should pass successfully 
 
 #### Things that work
