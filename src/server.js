@@ -28,11 +28,20 @@ server.post('/', bodyParser, async (req, res) => {
   const { name, message } = req.body;
 
   const errors = {};
+
   if (!name) {
     errors.name = 'please enter your name';
   }
   if (!message) {
     errors.message = 'please enter a message';
+  }
+  
+  let messages;
+  try {
+    messages = await readMessages();
+  } catch (err) {
+    console.log('Error reading messages: ' + err);
+    messages = [];
   }
 
   if (Object.keys(errors).length) {
@@ -84,5 +93,6 @@ server.post('/delete/:emoji', async (req, res) => {
   saveMessages(messages);
   res.redirect('/');
 });
+
 
 module.exports = server;
