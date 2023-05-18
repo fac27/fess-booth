@@ -1,6 +1,9 @@
 const test = require('node:test');
 const assert = require('node:assert');
 const { request } = require('../test/helpers.js');
+const getEmoji = require('get-random-emoji');
+
+const messages = [];
 
 test('GET home page', async () => {
   const { status, body } = await request('/', {
@@ -32,4 +35,27 @@ test('POST without name or message re-renders page with both errors', async () =
     /please enter a message/i,
     `Expected HTML to include "please enter a message", but received:\n${body}`
   );
+});
+
+test('POST /delete/:emoji deletes the post and redirects', async () => {
+  // Add a message to delete
+  const emojiToDelete = getEmoji();
+  messages.push({
+    name: 'Test Name',
+    emoji: emojiToDelete,
+    message: 'Test Message',
+    created: Date.now(),
+  });
+
+  const { status, headers } = await request(`/delete/${emojiToDelete}`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+  });
+
+  assert.equal(status, 302);
+
+  const deletedMessageIndex = messages.findIndex(
+    (message) => message.emoji === emojiToDelete
+  );
+  assert.equal(deletedMessageIndex, -1, 'The message should have been deleted');
 });

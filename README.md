@@ -47,10 +47,13 @@ to run the tests enter the following in the terminal:
 node --test
 ```
 both tests should pass successfully 
-### Things that worked well
 
+#### Things that work
+- Everything ofc :) Execept we dont like the form drop down floating on the right of the screen
 - having two branches (development to push to & final review and main to deploy)
 
-### Things that don't work well
-
+#### Things that don't work
+- Persistent posts/data across server restarts. (hack to avoid DB could include a git add data; git commit and a git push so we store the data on the repo ready) (maybe :/ )
 - Git did not work well
+
+
